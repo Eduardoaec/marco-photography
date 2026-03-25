@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marco Ortiz</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6f6f2;
+      color: #111;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 26px 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: rgba(246, 246, 242, 0.96);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+    }
+
+    .brand h1 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 4px;
+    }
+
+    .brand p {
+      font-size: 11px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .main-nav a {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #333;
+      transition: opacity 0.3s ease;
+    }
+
+    .main-nav a:hover {
+      opacity: 0.5;
+    }
+
+    section {
+      padding: 140px 34px 70px;
+    }
+
+    .label {
+      font-size: 11px;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 20px;
+    }
+
+    /* HOME */
+    .home-top-space {
+      height: 26vh;
+    }
+
+    .slider-wrap {
+      overflow: hidden;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .slider-track {
+      display: flex;
+      width: max-content;
+      gap: 26px;
+      align-items: center;
+      animation: scrollLeft 12s linear infinite;
+    }
+
+    .slider-wrap:hover .slider-track {
+      animation-play-state: paused;
+    }
+
+    .slide {
+      width: 185px;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: #e9e9e4;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.45s ease, filter 0.45s ease;
+      filter: contrast(1.03) saturate(1.03);
+    }
+
+    .slide:hover img {
+      transform: scale(1.05);
+      filter: contrast(1.08) saturate(1.08);
+    }
+
+    @keyframes scrollLeft {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* WORK */
+    .work-intro {
+      max-width: 780px;
+      margin-bottom: 46px;
+    }
+
+    .work-intro p:last-child {
+      font-size: 15px;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    .work-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 34px 24px;
+    }
+
+    .work-item {
+      overflow: hidden;
+    }
+
+    .work-item img {
+      height: 430px;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .work-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .work-item figcaption {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-image img {
+      height: 700px;
+      object-fit: cover;
+    }
+
+    .about-text h2,
+    .contact h2 {
+      font-size: 34px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      font-size: 15px;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      max-width: 520px;
+    }
+
+    /* CONTACT */
+    .contact-links p {
+      margin-bottom: 12px;
+    }
+
+    .contact-links a {
+      font-size: 16px;
+      color: #222;
+      border-bottom: 1px solid transparent;
+      transition: opacity 0.3s ease, border-color 0.3s ease;
+    }
+
+    .contact-links a:hover {
+      opacity: 0.6;
+      border-color: #222;
+    }
+
+    @media (max-width: 1024px) {
+      .work-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-header {
+        flex-direction: column;
+        gap: 18px;
+        padding: 22px 20px;
+      }
+
+      section {
+        padding: 130px 20px 60px;
+      }
+
+      .main-nav {
+        gap: 16px;
+      }
+
+      .slide {
+        width: 130px;
+      }
+
+      .slide img {
+        height: 180px;
+      }
+
+      .work-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image img {
+        height: auto;
+      }
+
+      .about-text h2,
+      .contact h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <h1>Marco Ortiz</h1>
+      <p>Dublin Based</p>
+    </div>
+
+    <nav class="main-nav">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="https://instagram.com/" target="_blank">Instagram</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home">
+      <div class="home-top-space"></div>
+      <p class="label">Selected Work</p>
+
+      <div class="slider-wrap">
+        <div class="slider-track">
+          <div class="slide"><img src="marco1.png" alt="Marco photo 1"></div>
+          <div class="slide"><img src="marco2.png" alt="Marco photo 2"></div>
+          <div class="slide"><img src="marco3.jpg" alt="Marco photo 3"></div>
+          <div class="slide"><img src="marco4.jpg" alt="Marco photo 4"></div>
+          <div class="slide"><img src="marco5.jpg" alt="Marco photo 5"></div>
+          <div class="slide"><img src="marco6.jpg" alt="Marco photo 6"></div>
+          <div class="slide"><img src="marco7.jpg" alt="Marco photo 7"></div>
+          <div class="slide"><img src="marco8.png" alt="Marco photo 8"></div>
+
+          <div class="slide"><img src="marco1.png" alt="Marco photo 1"></div>
+          <div class="slide"><img src="marco2.png" alt="Marco photo 2"></div>
+          <div class="slide"><img src="marco3.jpg" alt="Marco photo 3"></div>
+          <div class="slide"><img src="marco4.jpg" alt="Marco photo 4"></div>
+          <div class="slide"><img src="marco5.jpg" alt="Marco photo 5"></div>
+          <div class="slide"><img src="marco6.jpg" alt="Marco photo 6"></div>
+          <div class="slide"><img src="marco7.jpg" alt="Marco photo 7"></div>
+          <div class="slide"><img src="marco8.png" alt="Marco photo 8"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work">
+      <div class="work-intro">
+        <p class="label">Work</p>
+        <p>
+          Una selección de trabajos visuales que reúne fotografía de comida,
+          fotografía de eventos, retratos y frames de video, con una estética
+          limpia, moderna y centrada en la imagen.
+        </p>
+      </div>
+
+      <div class="work-gallery">
+        <figure class="work-item">
+          <img src="marco1.png" alt="Trabajo 1">
+          <figcaption>Fotografía editorial</figcaption>
+        </figure>
+        <figure class="work-item">
+          <img src="marco2.png" alt="Trabajo 2">
+          <figcaption>Retrato</figcaption>
+        </figure>
+        <figure class="work-item">
+          <img src="marco3.jpg" alt="Trabajo 3">
+          <figcaption>Food photography</figcaption>
+        </figure>
+        <figure class="work-item">
+          <img src="marco4.jpg" alt="Trabajo 4">
+          <figcaption>Evento</figcaption>
+        </figure>
+        <figure class="work-item">
+          <img src="marco5.jpg" alt="Trabajo 5">
+          <figcaption>Frame de video</figcaption>
+        </figure>
+        <figure class="work-item">
+          <img src="marco6.jpg" alt="Trabajo 6">
+          <figcaption>Retrato natural</figcaption>
+        </figure>
+        <figure class="work-item">
+          <img src="marco7.jpg" alt="Trabajo 7">
+          <figcaption>Campaña visual</figcaption>
+        </figure>
+        <figure class="work-item">
+          <img src="marco8.png" alt="Trabajo 8">
+          <figcaption>Serie visual</figcaption>
+        </figure>
+        <figure class="work-item">
+          <img src="marco1.png" alt="Trabajo 9">
+          <figcaption>Color y atmósfera</figcaption>
+        </figure>
+        <figure class="work-item">
+          <img src="marco2.png" alt="Trabajo 10">
+          <figcaption>Retrato editorial</figcaption>
+        </figure>
+        <figure class="work-item">
+          <img src="marco3.jpg" alt="Trabajo 11">
+          <figcaption>Fotografía gastronómica</figcaption>
+        </figure>
+        <figure class="work-item">
+          <img src="marco4.jpg" alt="Trabajo 12">
+          <figcaption>Frame cinematográfico</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="marco1.png" alt="Marco Ortiz">
+        </div>
+
+        <div class="about-text">
+          <p class="label">About</p>
+          <h2>Marco Ortiz</h2>
+          <p>
+            Soy fotógrafo y creador visual basado en Dublin. Mi trabajo busca
+            construir imágenes con atmósfera, sensibilidad y una estética limpia.
+          </p>
+          <p>
+            Desarrollo retratos, fotografía de eventos, fotografía gastronómica y
+            frames de video, siempre con un enfoque visual sencillo, elegante y profesional.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <p class="label">Contact</p>
+      <h2>Get in touch</h2>
+      <div class="contact-links">
+        <p><a href="mailto:marco@email.com">marco@email.com</a></p>
+        <p><a href="https://instagram.com/" target="_blank">@marcoortiz</a></p>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
